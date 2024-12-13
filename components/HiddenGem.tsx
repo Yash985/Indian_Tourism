@@ -1,11 +1,15 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Dispatch, SetStateAction } from "react";
 import { LayoutGrid } from "./ui/layout-grid";
 
-export function HiddenGem() {
+export function HiddenGem({setOpen}:{setOpen:Dispatch<SetStateAction<boolean>>}) {
   return (
-    <div className=" h-screen py-20 w-full px-10">
+    <div className=" md:h-[500px] xl:h-[600px] px-10  py-5 border-2 border-slate-900  bg-black bg-opacity-50 rounded-xl md:w-[1000px]">
+      <div className="text-gray-300 float-end cursor-pointer" onClick={()=>setOpen(p=>!p)} ><XMark /></div>
+      <div className="flex flex-col items-center h-full">
+      <p className="text-gray-500 italic font-semibold text-5xl">Hidden Gems</p>
       <LayoutGrid cards={cards} />
+      </div>
     </div>
   );
 }
@@ -99,3 +103,23 @@ const cards = [
       "https://images.unsplash.com/photo-1475070929565-c985b496cb9f?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
+
+
+const XMark = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="size-10 text-gray-500 mt-4"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 18 18 6M6 6l12 12"
+      />
+    </svg>
+  );
+};

@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useState } from "react";
+import {motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+// import Image from "next/image";
 
 type Card = {
   id: number;
@@ -76,7 +76,9 @@ const ImageComponent = ({ card }: { card: Card }) => {
 
 const SelectedCard = ({ selected }: { selected: Card | null }) => {
   return (
-    <div className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]">
+    <>
+      
+      <div className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]">
       <motion.div
         initial={{
           opacity: 0,
@@ -105,9 +107,13 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
           ease: "easeInOut",
         }}
         className="relative px-8 pb-4 z-[70]"
-      >
-        {selected?.content}
+        >
+          
+          {selected?.content}
+          {/* Readmore link could be added here */}
+          {/* <p className="text-gray-400 text-sm underline">Readmore</p> */}
       </motion.div>
-    </div>
+      </div>
+      </>
   );
 };
