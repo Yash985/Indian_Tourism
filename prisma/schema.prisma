@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model State{
+  id          Int      @id @default(autoincrement())
+  name        String
+  state_img   String
+  places      PlacesToVisit[]
+  hiddenGems  HiddenGem[]
+}
+
+model PlacesToVisit{
+  id          Int      @id @default(autoincrement())
+  title        String
+  description String
+  img         String
+  badge       String
+  state       State    @relation(fields: [stateId], references: [id])
+  stateId     Int
+}
+
+model HiddenGem{
+  id         Int      @id @default(autoincrement())
+  title        String
+  brief_description String
+  description String
+  img         String
+  state       State    @relation(fields: [stateId], references: [id])
+  stateId     Int
+}
+
+// enum Badge{
+//   Popular
+//   MustVisit
+//   FamilyFriendly
+//   Adventure
+//   Romantic
+//   Historic
+//   Scenic
+//   Religious
+//   Wildlife
+//   Food
+//   Shopping
+//   Nightlife
+//   Beach
+//   HillStation
+//   Waterfall
+//   Lake
+//   Desert
+//   Island
+//   Forest
+//   Museum
+//   Temple
+//   Fort
+//   Palace
+//   Garden
+//   Zoo
+//   Sanctuary
+//   Aquarium
+//   ThemePark
+//   WaterPark
+//   NationalPark
+//   WildlifeSanctuary
+//   BirdSanctuary
+//   TigerReserve
+//   ElephantReserve
+// }
