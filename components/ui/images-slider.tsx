@@ -81,7 +81,7 @@ export const ImagesSlider = ({
       window.removeEventListener("keydown", handleKeyDown);
       clearInterval(interval);
     };
-  }, []);
+  }, );
 
   const slideVariants = {
     initial: {
