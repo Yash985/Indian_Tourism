@@ -26,7 +26,7 @@ export default function Page() {
       await details();
     };
     fetchdetails();
-  }, []);
+  });
   const details = async () => {
     const data = await getdetails(formattedState);
     const fetchedPlaces = data?.places || [];

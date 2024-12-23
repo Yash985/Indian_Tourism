@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect, Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { LayoutGrid } from "./ui/layout-grid";
 
 export function HiddenGem({setOpen}:{setOpen:Dispatch<SetStateAction<boolean>>}) {
