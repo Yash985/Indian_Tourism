@@ -16,7 +16,7 @@ export const Card = React.memo(
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
     }) => (
-    <Link href={`details/${card.title.replace(/\s+/g, '-')}`} >
+    <Link href={`details/${card.name.replace(/\s+/g, '-')}`} >
       <div
       onMouseEnter={() => setHovered(index)}
       onMouseLeave={() => setHovered(null)}
@@ -26,8 +26,8 @@ export const Card = React.memo(
       )}
     >
       <Image
-        src={card.src}
-        alt={card.title}
+        src={card.state_img_url}
+        alt={card.name}
         fill
         
         className="object-cover absolute inset-0"
@@ -40,7 +40,7 @@ export const Card = React.memo(
         )}
       >
         <div className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
-          {card.title}
+          {card.name}
         </div>
       </div>
     </div>
@@ -51,8 +51,8 @@ export const Card = React.memo(
 Card.displayName = "Card";
 
 type Card = {
-  title: string;
-  src: string;
+  name: string;
+  state_img_url: string;
 };
 
 export function FocusCards({ cards }: { cards: Card[] }) {
@@ -62,7 +62,7 @@ export function FocusCards({ cards }: { cards: Card[] }) {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl xl:max-w-7xl mx-auto md:px-8 w-full my-10">
       {cards.map((card, index) => (
         <Card
-          key={card.title}
+          key={card.name}
           card={card}
           index={index}
           hovered={hovered}

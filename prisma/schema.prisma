@@ -15,8 +15,8 @@ datasource db {
 
 model State{
   id          Int      @id @default(autoincrement())
-  name        String
-  state_img   String
+  name        String   @unique
+  state_img_url   String
   places      PlacesToVisit[]
   hiddenGems  HiddenGem[]
 }
@@ -24,19 +24,19 @@ model State{
 model PlacesToVisit{
   id          Int      @id @default(autoincrement())
   title        String
-  description String
-  img         String
-  badge       String
-  state       State    @relation(fields: [stateId], references: [id])
-  stateId     Int
+  desc         String
+  img_url      String
+  badge        String
+  state        State    @relation(fields: [stateId], references: [id])
+  stateId      Int
 }
 
 model HiddenGem{
   id         Int      @id @default(autoincrement())
   title        String
-  brief_description String
-  description String
-  img         String
+  brief_desc String
+  desc String?
+  img_url         String
   state       State    @relation(fields: [stateId], references: [id])
   stateId     Int
 }
