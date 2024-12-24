@@ -23,19 +23,21 @@ export default function Page() {
 
   useEffect(() => {
     const fetchdetails = async () => {
-      await details();
-    };
-    fetchdetails();
-  });
-  const details = async () => {
-    const data = await getdetails(formattedState);
+      const data = await getdetails(formattedState);
     const fetchedPlaces = data?.places || [];
     setPlaces(fetchedPlaces);
-  };
+    };
+    fetchdetails();
+  },[formattedState])
+  // const details = async () => {
+  //   const data = await getdetails(formattedState);
+  //   const fetchedPlaces = data?.places || [];
+  //   setPlaces(fetchedPlaces);
+  // };
   return (
     <>
       <div className="relative flex flex-col items-center mt-10 mb-[100px]">
-        <p className="font-semibold text-7xl text-gray-200 my-5">
+        <p className="font-semibold md:text-7xl text-6xl text-gray-200 my-5">
           {formattedState}
         </p>
         <Details places={places} />

@@ -8,13 +8,13 @@ export async function Places() {
     state_img_url: string;
   }[] = await getStates()
   return (
-    <div className="flex flex-col items-center my-14">
+    <div className="flex flex-col items-center">
       <div>
-        <h2 className="text-5xl font-bold text-gray-400 my-3">
+        <h2 className="md:text-5xl text-2xl font-bold text-gray-400 my-8">
           Vacations are long due🙄
         </h2>
       </div>
-      <p className="text-2xl text-gray-500 my-2">Find your peace😌</p>
+      <p className="md:text-2xl text-xl text-gray-500 my-2">Find your peace😌</p>
       <FocusCards cards={states} />
     </div>
   );

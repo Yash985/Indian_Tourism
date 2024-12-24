@@ -28,8 +28,6 @@ export function Hero() {
     loop: 0,
     delaySpeed: 3000,
   });
-  //https://tourism-images.s3.ap-south-1.amazonaws.com/karnataka/karnataka.jpg
-  //https://tourism-images.s3.ap-south-1.amazonaws.com/lehladakh/khardung_la_pass.jpg
   const images = [
     "https://tourism-images.s3.ap-south-1.amazonaws.com/goa/goa.jpg",
     "https://tourism-images.s3.ap-south-1.amazonaws.com/jandk/j%26k.jpg",

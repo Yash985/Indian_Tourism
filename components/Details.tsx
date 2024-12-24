@@ -15,7 +15,7 @@ export function Details({ places }: { places: Places }) {
     return <p className="text-5xl text-gray-400 mt-24">Loading...</p>
   }
   return (
-      <TracingBeam className="px-6">
+      <TracingBeam className="px-8 ml-3 md:mx-auto md:px-6">
         <div className="max-w-2xl mx-auto antialiased pt-4 relative text-gray-300">
           {places.map((place, index) => (
             <div key={`content-${index}`} className="mb-10">
@@ -27,7 +27,7 @@ export function Details({ places }: { places: Places }) {
                 {place.title}
               </p>
   
-              <div className="text-sm  prose prose-sm dark:prose-invert text-gray-400">
+              <div className="text-sm prose prose-sm dark:prose-invert text-gray-400">
                 {place?.img_url && (
                   <Image
                     src={place.img_url}
