@@ -6,7 +6,7 @@ export async function Places() {
   const states: {
     name: string;
     state_img_url: string;
-    }[]=await getStates()
+  }[] = await getStates()
   return (
     <div className="flex flex-col items-center my-14">
       <div>

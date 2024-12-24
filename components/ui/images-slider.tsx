@@ -35,29 +35,51 @@ export const ImagesSlider = ({
       prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
     );
   };
-
   useEffect(() => {
-    loadImages();
-  });
-
-  const loadImages = () => {
-    // setLoading(true);
-    const loadPromises = images.map((image) => {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.src = image;
-        img.onload = () => resolve(image);
-        img.onerror = reject;
+    const loadImages = () => {
+      // setLoading(true);
+      const loadPromises = images.map((image) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = image;
+          img.onload = () => resolve(image);
+          img.onerror = reject;
+        });
       });
-    });
 
-    Promise.all(loadPromises)
-      .then((loadedImages) => {
-        setLoadedImages(loadedImages as string[]);
-        // setLoading(false);
-      })
-      .catch((error) => console.error("Failed to load images", error));
-  };
+      Promise.all(loadPromises)
+        .then((loadedImages) => {
+          setLoadedImages(loadedImages as string[]);
+          // setLoading(false);
+        })
+        .catch((error) => console.error("Failed to load images", error));
+    };
+    loadImages();
+  }, [images]);
+ 
+  // useEffect(() => {
+  //   loadImages();
+  // });
+
+  // const loadImages = () => {
+  //   // setLoading(true);
+  //   const loadPromises = images.map((image) => {
+  //     return new Promise((resolve, reject) => {
+  //       const img = new Image();
+  //       img.src = image;
+  //       img.onload = () => resolve(image);
+  //       img.onerror = reject;
+  //     });
+  //   });
+
+  //   Promise.all(loadPromises)
+  //     .then((loadedImages) => {
+  //       setLoadedImages(loadedImages as string[]);
+  //       // setLoading(false);
+  //     })
+  //     .catch((error) => console.error("Failed to load images", error));
+  // };
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
@@ -74,7 +96,7 @@ export const ImagesSlider = ({
     if (autoplay) {
       interval = setInterval(() => {
         handleNext();
-      }, 5000);
+      }, 2000);
     }
 
     return () => {
