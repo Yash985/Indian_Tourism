@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Footer() {
   const date = new Date().getFullYear();
   return (
@@ -10,8 +12,16 @@ export function Footer() {
         <div className=" text-gray-400 gap-2 mt-2">
           <p>By:rookie_dev</p>
           <div className="flex gap-2 mt-1">
-            <GithubIcon />
-            <TwitterIcon />
+            <Link
+                          href={"https://github.com/Yash985"}
+                          target="_blank"
+              className="cursor-pointer"
+            >
+              <GithubIcon />
+            </Link>
+            <Link href={"https://x.com/rokie_dev"} target="_blank" className="cursor-pointer">
+              <TwitterIcon />
+            </Link>
           </div>
         </div>
       </div>
