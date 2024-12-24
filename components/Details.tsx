@@ -19,7 +19,7 @@ export function Details({ places }: { places: Places }) {
         <div className="max-w-2xl mx-auto antialiased pt-4 relative text-gray-300">
           {places.map((place, index) => (
             <div key={`content-${index}`} className="mb-10">
-              <h2 className="bg-black text-white rounded-full text-sm w-fit px-4 py-1 mb-4">
+              <h2 className="bg-gray-800 text-white rounded-full text-sm w-fit px-4 py-1 mb-4">
                 {place.badge}
               </h2>
   

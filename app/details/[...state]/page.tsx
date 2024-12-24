@@ -37,7 +37,7 @@ export default function Page() {
   return (
     <>
       <div className="relative flex flex-col items-center mt-10 mb-[100px]">
-        <p className="font-semibold md:text-7xl text-6xl text-gray-200 my-5">
+        <p className={`font-semibold md:text-7xl ${formattedState.length<=10?"text-6xl":"text-4xl"}  text-gray-200 my-5`}>
           {formattedState}
         </p>
         <Details places={places} />
