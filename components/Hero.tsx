@@ -1,10 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ImagesSlider } from "./ui/images-slider";
 import { useTypewriter } from "react-simple-typewriter";
+import { getStates } from "@/app/actions/getstates";
 
 export function Hero() {
+  const [images, setImages] = useState<string[]>([]);
   const [text] = useTypewriter({
     words: [
       "Incredible",
@@ -28,14 +30,22 @@ export function Hero() {
     loop: 0,
     delaySpeed: 3000,
   });
-  const images = [
-    "https://tourism-images.s3.ap-south-1.amazonaws.com/goa/goa.jpg",
-    "https://tourism-images.s3.ap-south-1.amazonaws.com/jandk/j%26k.jpg",
-    "https://tourism-images.s3.ap-south-1.amazonaws.com/westbengal/west_bengal.jpg",
-    "https://tourism-images.s3.ap-south-1.amazonaws.com/himachal/dharamsala.jpg",
-    "https://tourism-images.s3.ap-south-1.amazonaws.com/karnataka/karnataka.jpg",
-    "https://tourism-images.s3.ap-south-1.amazonaws.com/lehladakh/khardung_la_pass.jpg"
-  ];
+  useEffect(() => { 
+    const fetchImages = async () => {
+      const res = await getStates();
+      const fetchedImages = res?.map((state: { state_img_url: string }) => state.state_img_url) || [];
+      setImages(fetchedImages);
+    };
+    fetchImages();
+  },[])
+  // const images = [
+  //   "https://tourism-images.s3.ap-south-1.amazonaws.com/goa/goa.jpg",
+  //   "https://tourism-images.s3.ap-south-1.amazonaws.com/jandk/j%26k.jpg",
+  //   "https://tourism-images.s3.ap-south-1.amazonaws.com/westbengal/west_bengal.jpg",
+  //   "https://tourism-images.s3.ap-south-1.amazonaws.com/himachal/dharamsala.jpg",
+  //   "https://tourism-images.s3.ap-south-1.amazonaws.com/karnataka/karnataka.jpg",
+  //   "https://tourism-images.s3.ap-south-1.amazonaws.com/lehladakh/khardung_la_pass.jpg"
+  // ];
 
   return (
     <ImagesSlider className=" " images={images}>
