@@ -13,6 +13,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int     @id  @default(autoincrement())
+  username  String  @unique
+  email     String  
+  password  String
+  role      Role    @default(USER)
+}
 model State{
   id          Int      @id @default(autoincrement())
   name        String   @unique
@@ -41,6 +48,10 @@ model HiddenGem{
   stateId     Int
 }
 
+enum Role{
+  USER
+  ADMIN
+}
 // enum Badge{
 //   Popular
 //   MustVisit
